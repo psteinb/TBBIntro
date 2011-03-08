@@ -120,7 +120,7 @@
 \begin{block}{A History of Code}
   \begin{center}
     \Large
-    \begin{tabular}[h]{l|p{3cm}}
+    \begin{tabular}[h]{l|p{5cm}}
       & lines of code / $\unit[1]{loc}$ \\[12pt]
       JADE & $o(10-100)k$\\[12pt]
       OPAL & $o(100)k$\\[12pt]
@@ -143,7 +143,7 @@
 \normalsize
 \begin{block}{physics is about ...}
   \begin{itemize}
-  \item modelling nature
+  \item \alert<4->{modelling nature}
   \item objects interact according to laws of nature
     \begin{itemize}
     \item fields, particles, atoms, molecules, solid states, liquids
@@ -151,9 +151,10 @@
   \end{itemize}
 \end{block}
 \vfill
+\pause
 \begin{block}{object-oriented programming is about ...}
   \begin{itemize}
-  \item objects and interactions
+  \item \alert<4->{objects and interactions}
     \begin{itemize}
     \item a way of thinking about software well adapted to
       physics
@@ -162,15 +163,59 @@
   \end{itemize}
 \end{block}
 \vfill
+\pause
 \begin{block}{object-oriented analysis and design ...}
   \begin{itemize}
   \item is a software engineering practice
-  \item manages large projects professionally
+  \item \alert<4->{manages large projects professionally}
   \end{itemize}
 \end{block}
 \end{frame}
 
 \section{Orthogonality}
+\begin{frame}
+  \frametitle{Orthogonality}
+  \begin{definition}
+    A \emph{Responsibility} of a class is defined as \emph{a reason for the class to change}.
+  \end{definition}
+  %Modem, TSystem examples
+  \vfill
+  \begin{exampleblock}{Exercise 1}
+    \begin{center}
+      \Large
+      How many responsibilities do classes a) and b) have?
+    \end{center}
+
+  \end{exampleblock}
+  \vfill
+\end{frame}
+
+\begin{frame}
+  \frametitle{Single-Responsibility-Principle}
+  \begin{theorem}
+    A class should only have \textbf{one} reason to change.
+  \end{theorem}
+\vfill
+  \begin{columns}[c]
+    \begin{column}{.49\textwidth}
+       \begin{block}{before}
+
+         % \begin{center}
+         %   %   \resizebox{.85\textwidth}{!}{\includegraphics{img/modem_before}}
+         % \end{center}
+      %   
+       \end{block}
+ %     
+    \end{column}
+    \begin{column}{.49\textwidth}
+       \begin{block}{after}
+      % \begin{center}
+      %   \resizebox{.85\textwidth}{!}{\includegraphics{img/modem_after}}
+      % \end{center}
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \section{Open-Closed}
 
