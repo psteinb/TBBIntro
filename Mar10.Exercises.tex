@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[14pt]{article}
 \usepackage[latin1]{inputenc}
 \usepackage[english]{babel}
 \usepackage{graphics}
@@ -7,11 +7,20 @@
 \lstset{%
   language=C++
 }
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
 \begin{document}
-\section{Exercise 1}
-Define the responsibilities of the following class:\\
-\begin{enumerate}
-\item the Modem class:\\
+\part*{Class Design Principles}
+\label{part:all}
+
+
+\section*{Exercise 1}
+\large
+Define the responsibilities of the following classes!\\
+ \begin{enumerate}
+\item \large \textbf{The Modem Class}\\
+  \normalsize
   \begin{lstlisting}
     class Modem
     {
@@ -22,5 +31,9 @@ Define the responsibilities of the following class:\\
         char receive();
     }
   \end{lstlisting}
+%\newpage
+\item \large \textbf{The TStyle Class}\\
+  \normalsize
+  \lstinputlisting{code/TStyle.h}
 \end{enumerate}
 \end{document}
