@@ -1,0 +1,112 @@
+\documentclass[9pt,dvips]{beamer}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphics}
+%\usepackage{includegraphix}
+\usepackage{hyperref}
+\usepackage{units}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{color}
+
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{shapes}
+
+\useoutertheme{infolines}
+\usetheme[]{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{bibliography item}[text]
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamertemplate{caption}[numbered]
+\definecolor{somegrey}{RGB}{240,240,240}
+
+\setbeamercolor{block title}{bg=black!80!white,fg=white}
+\setbeamercolor{block title alerted}{use=alerted text,fg=blue!40!white,bg=black!80!white}
+
+%\addfootbox{bg=grey,fg=black}{\quad \insertshortauthor \hspace{.4\textwidth} \insertshortinstitute \hspace{.4\textwidth} \insertpagenumber}
+
+\begin{document}
+
+
+\pgfdeclareimage[height=1.5cm]{ATLASlogo}{img/AN_atlaslogo}
+\pgfdeclareimage[height=1.5cm]{FSPlogo}{img/FSPAtlas_logo}
+\pgfdeclareimage[height=.8cm]{TUDlogo}{img/logo_schwarz}
+\titlegraphic{ \hspace{2cm} \pgfuseimage{TUDlogo} \hfill \pgfuseimage{ATLASlogo} \hfill \pgfuseimage{FSPlogo}\hspace{2cm} }
+
+\title[Class Design Principles]{ Class Design Principles in Object-Oriented Programming }
+%\subtitle{- A  -}
+\author[P. Steinbach]{Wolfgang F. Mader, \textbf{Peter Steinbach}}
+\date{March 10th, 2011}
+
+\institute[IKTP]{Institute for Nuclear and Particle Physics, TU Dresden}
+
+
+
+\begin{frame}
+  \vfill
+  \begin{center}
+    \begin{block}{From the Gaudi User Guide, \cite{gug}}
+      \begin{quotation}
+        A priori, we see no reason why moving to a language which supports the idea of objects, such as \texttt{C++}, should change the way we think of doing physics analysis.
+      \end{quotation}
+    \end{block}
+    \huge
+    Why Use Object-Oriented Programming in the First Place?
+  \end{center}
+
+  \vfill
+\end{frame}
+
+\maketitle
+
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section[Why OOP?]{Why Object-Oriented Programming?}
+\subsection[Procedural]{Procedural Programming}
+\begin{frame}
+\frametitle{Procedural Programming}
+
+\end{frame}
+
+\subsection[OOP]{OOP Programming}
+\begin{frame}
+\frametitle{OO Programming}
+
+\end{frame}
+
+\subsection[OOP in HEP]{Programming Paradigms in HEP}
+\begin{frame}
+\frametitle{Programming Paradigms in HEP}
+
+\end{frame}
+
+\section{Orthogonality}
+
+\section{Princinple 2}
+
+\section{Princinple 3}
+
+\section{Princinple 4}
+
+\section{Summary}
+
+\section{References}
+\scriptsize
+\begin{frame}
+  \frametitle{References}
+  \bibliographystyle{plain} 
+  \bibliography{Mar10.ClassDesign}
+\end{frame}
+\end{document}
+
+
+
+
