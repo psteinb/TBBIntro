@@ -70,31 +70,113 @@
 \end{frame}
 
 \section[Why OOP?]{Why Object-Oriented Programming?}
-\subsection[Procedural]{Procedural Programming}
+\subsection[ProceduralVsOO]{Procedural vs. OO Programming}
 \begin{frame}
-\frametitle{Procedural Programming}
+\frametitle{Procedural vs. OO Programming}
+\begin{columns}[c]
+  \begin{column}{.49\textwidth}
 
+      \begin{block}{the procedural paradigm}
+        \begin{center}
+        \resizebox{.85\textwidth}{!}{\includegraphics{img/procedural}}
+      \end{center}
+      \end{block}
+   
+  \end{column}
+\hfill
+\pause
+  \begin{column}{.49\textwidth}
+
+      \begin{block}{the oo paradigm}
+        \begin{center}
+        \resizebox{1.\textwidth}{!}{\includegraphics{img/oop}}
+        \end{center}
+      \end{block}
+      
+  \end{column}
+
+\end{columns}
+\vfill
+\begin{columns}[c]
+  \begin{column}{.49\textwidth}
+    \begin{center}
+      \huge
+      \alert{Top-Down}
+  
+    \end{center}
+  \end{column}
+  \begin{column}{.49\textwidth}
+    \begin{center}
+      \huge
+      \alert{Bottom-Up}
+    \end{center}
+  \end{column}
+\end{columns}
 \end{frame}
 
-\subsection[OOP]{OOP Programming}
+\subsection[Hep Software]{HEP Programming}
 \begin{frame}
-\frametitle{OO Programming}
+\frametitle{Hep Software Sizes}
+\begin{block}{A History of Code}
+  \begin{center}
+    \Large
+    \begin{tabular}[h]{l|p{3cm}}
+      & lines of code / $\unit[1]{loc}$ \\[12pt]
+      JADE & $o(10-100)k$\\[12pt]
+      OPAL & $o(100)k$\\[12pt]
+      ATLAS & $o(1)M$
+    \end{tabular}
+  \end{center}
+\end{block}
+\vfill
+\begin{itemize}
+\item<2-> experiments size and complexity increases 
+\item<3-> experiments analysis software size and complexity increases
+\item<4-> \Large \alert{We need tools that deal with this complexity!}
+\end{itemize}
 
 \end{frame}
 
 \subsection[OOP in HEP]{Programming Paradigms in HEP}
 \begin{frame}
 \frametitle{Programming Paradigms in HEP}
+\normalsize
+\begin{block}{physics is about ...}
+  \begin{itemize}
+  \item modelling nature
+  \item objects interact according to laws of nature
+    \begin{itemize}
+    \item fields, particles, atoms, molecules, solid states, liquids
+    \end{itemize}
+  \end{itemize}
+\end{block}
+\vfill
+\begin{block}{object-oriented programming is about ...}
+  \begin{itemize}
+  \item objects and interactions
+    \begin{itemize}
+    \item a way of thinking about software well adapted to
+      physics
+    \end{itemize}
 
+  \end{itemize}
+\end{block}
+\vfill
+\begin{block}{object-oriented analysis and design ...}
+  \begin{itemize}
+  \item is a software engineering practice
+  \item manages large projects professionally
+  \end{itemize}
+\end{block}
 \end{frame}
 
 \section{Orthogonality}
 
-\section{Princinple 2}
+\section{Open-Closed}
 
-\section{Princinple 3}
+\section{Liskhov Substitution}
 
-\section{Princinple 4}
+\section{Dependency-Inversion}
 
 \section{Summary}
 
