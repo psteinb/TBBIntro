@@ -1,0 +1,26 @@
+\documentclass[12pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphics}
+\usepackage{color}
+\usepackage{listings}
+\lstset{%
+  language=C++
+}
+\begin{document}
+\section{Exercise 1}
+Define the responsibilities of the following class:\\
+\begin{enumerate}
+\item the Modem class:\\
+  \begin{lstlisting}
+    class Modem
+    {
+      public:
+        void dial(String phoneNumber);
+        void hangup();
+        void send(char aCharacter);
+        char receive();
+    }
+  \end{lstlisting}
+\end{enumerate}
+\end{document}
