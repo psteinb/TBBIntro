@@ -5,7 +5,14 @@
 %\usepackage{includegraphix}
 \usepackage{hyperref}
 \usepackage{units}
-
+%\usepackage{listings}
+%\lstset{%
+%  language=C++,
+%  numbers=left, 
+%  numberstyle=\tiny,
+%  frame=single
+%}
+%
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -27,6 +34,7 @@
 
 \setbeamercolor{block title}{bg=black!80!white,fg=white}
 \setbeamercolor{block title alerted}{use=alerted text,fg=blue!40!white,bg=black!80!white}
+\setbeamercolor{block title example}{bg=black!20!white}
 
 %\addfootbox{bg=grey,fg=black}{\quad \insertshortauthor \hspace{.4\textwidth} \insertshortinstitute \hspace{.4\textwidth} \insertpagenumber}
 
@@ -176,38 +184,46 @@
 \begin{frame}
   \frametitle{Orthogonality}
   \begin{definition}
-    A \emph{Responsibility} of a class is defined as \emph{a reason for the class to change}.
+    A \textbf{Responsibility} of a class is defined as \emph{a reason for the class to change}.
   \end{definition}
   %Modem, TSystem examples
   \vfill
+  \pause
   \begin{exampleblock}{Exercise 1}
     \begin{center}
       \Large
       How many responsibilities do classes a) and b) have?
     \end{center}
-
   \end{exampleblock}
+\pause
   \vfill
+  \begin{definition}
+    \textbf{Orthogonality}(\cite{PP}) of a system of classes can be defined as the degree of how many classes have independent or non-overlapping \emph{responsibilities}.
+  \end{definition}
+
 \end{frame}
+
 
 \begin{frame}
   \frametitle{Single-Responsibility-Principle}
-  \begin{theorem}
-    A class should only have \textbf{one} reason to change.
+  \begin{theorem}[Single-Responsibility-Principle, \cite{Agile}]
+    A class should only have \textbf{one} reason to change, i.e. try to create systems with high orthogonality.
   \end{theorem}
 \vfill
-  \begin{columns}[c]
-    \begin{column}{.49\textwidth}
+\pause
+  \begin{columns}[t]
+    \begin{column}{.48\textwidth}
        \begin{block}{before}
 
           \begin{center}
-               \resizebox{.85\textwidth}{!}{\includegraphics{uml/modem}}
+               \resizebox{.65\textwidth}{!}{\includegraphics{uml/modem}}
           \end{center}
       %   
        \end{block}
  %     
     \end{column}
-    \begin{column}{.49\textwidth}
+\hfill
+    \begin{column}{.48\textwidth}
        \begin{block}{after}
        \begin{center}
          \resizebox{.85\textwidth}{!}{\includegraphics{uml/modemImplementation}}
@@ -218,6 +234,107 @@
 \end{frame}
 
 \section{Open-Closed}
+\begin{frame}
+  \frametitle{The Open-Closed Principle}
+  \begin{theorem}[Open-Closed Principle, \cite{Agile}]
+    Software Entities (classes, modules, functions, etc) should be open for extenstion, but closed for modification.
+  \end{theorem}
+\vfill
+\pause
+  \begin{columns}[t]
+    \begin{column}{.48\textwidth}
+       \begin{block}{Open}
+         \begin{itemize}
+         \item<3-> the \textbf{behavior} of an entity can be extended
+         \item<3-> as requirements of a system change (that's a fact!), the entities behavior can be \textbf{extended or modified} to satisfy these changes
+         \end{itemize}
+       \end{block}
+ %     
+    \end{column}
+\hfill
+    \begin{column}{.48\textwidth}
+       \begin{block}{Closed}
+         \begin{itemize}
+         \item<4-> extension of behavior does \textbf{NOT} result in changing the source code 
+         \item<4-> the binary executable version of a given entity remains \textbf{untouched}
+         \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+
+\uncover<5->{
+\begin{exampleblock}{Exercise 2}
+  \begin{center}
+    The above is way too complicated for one slide! Let's have a look
+    at \textbf{Exercise 2}!
+  \end{center}
+
+\end{exampleblock}
+}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{The Open-Closed Principle Reviewed}
+  \begin{block}{The Square/Circle Problem}
+    \begin{itemize}
+    \item \emph{rigid}: adding triangle requires \texttt{Shape, Square, Circle, DrawAllShapes} to be recompiled and redeployed
+    \item \emph{fragile}: \texttt{switch/case} will be required by all client classes that use shapes
+    \item \emph{immobile}: reusing \texttt{DrawAllShapes} is impossible without including \texttt{Shape, Square, Circle} as well
+    \end{itemize}
+  \end{block}
+\pause
+\begin{block}{Solution: Using Abstraction}
+    
+    \begin{columns}[t]
+      \begin{column}{.45\textwidth}
+        \small
+        \begin{semiverbatim}
+struct Shape \{ 
+  virtual void Draw() const = 0; 
+\}
+
+struct Square \{ 
+  virtual void Draw() const; 
+\}
+        \end{semiverbatim}
+      \end{column}
+      \begin{column}{.45\textwidth}
+        \scriptsize
+        \begin{semiverbatim}
+void DrawAllShapes(
+  const std::vector<Shape*>& list) \{
+
+  std::vector<Shape*>::const_iterator itr; 
+
+  for(itr=list.begin();itr!=list.end(); ++itr) 
+  \{ 
+    itr->Draw(); 
+  \}
+
+\}
+        \end{semiverbatim}
+      \end{column}
+
+    \end{columns}
+
+  \end{block}
+
+
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Open-Closed Principle Summary}
+\begin{block}{But hold on ...}
+  
+\end{block}
+\vfill
+\pause
+\begin{block}{To Summarize}
+  
+\end{block}
+\end{frame}
 
 \section{Liskhov Substitution}
 
