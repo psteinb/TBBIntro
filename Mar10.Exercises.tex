@@ -1,11 +1,15 @@
-\documentclass[14pt]{article}
+\documentclass[14pt,a4paper]{article}
 \usepackage[latin1]{inputenc}
 \usepackage[english]{babel}
+\usepackage{a4wide}
 \usepackage{graphics}
 \usepackage{color}
 \usepackage{listings}
 \lstset{%
-  language=C++
+  language=C++,
+  numbers=left, 
+  numberstyle=\tiny,
+  frame=single
 }
 \renewcommand{\theenumi}{\alph{enumi}}
 \renewcommand{\labelenumi}{\theenumi)}
@@ -14,14 +18,14 @@
 \part*{Class Design Principles}
 \label{part:all}
 
-
+ 
 \section*{Exercise 1}
 \large
 Define the responsibilities of the following classes!\\
  \begin{enumerate}
 \item \large \textbf{The Modem Class}\\
-  \normalsize
-  \begin{lstlisting}
+  \small
+  \begin{lstlisting}[float=ht,caption={\large \textbf{The Modem Class}}]
     class Modem
     {
       public:
@@ -31,9 +35,22 @@ Define the responsibilities of the following classes!\\
         char receive();
     }
   \end{lstlisting}
-%\newpage
+  
+\newpage
 \item \large \textbf{The TStyle Class}\\
+  \small \lstinputlisting[caption={\large \textbf{The TStyle Class}}]{code/TStyle.h}
   \normalsize
-  \lstinputlisting{code/TStyle.h}
+\end{enumerate}
+
+\newpage
+\section*{Exercise 2}
+Imagine we are writing a small piece of software to draw various geometric objects.\\
+\small
+\lstinputlisting[caption={\large \textbf{The Square/Circle Problem}},label=SqrCirc]{code/OCP.cc} 
+\normalsize
+\begin{enumerate}
+\item How many responsibilities has \texttt{DrawAllShapes} in Listing \ref{SqrCirc}?
+\item We are adding a new class \texttt{Triangle} and we want it to be drawn as well. How does Listing \ref{SqrCirc} adapt to this?
 \end{enumerate}
 \end{document}
+ 
