@@ -401,9 +401,98 @@ void DrawAllShapes(
 \end{block}
 \end{frame}
 
-\section{Dependency-Inversion}
+\section{Dependency-Inversion Principle}
+\begin{frame}
+  \frametitle{The \secname}
+  \begin{theorem}[from \cite{Agile}]
+    \begin{enumerate}
+    \item High level modules \textbf{should not depend} upon low
+      level modules. Both should depend upon abstractions.
+    \item Abstractions \textbf{should not depend} upon details. details
+      should depend upon abstractions.
+    \end{enumerate}
+  \end{theorem}
+\pause
+\vfill
+\begin{exampleblock}{Exercise 4}
+  \begin{center}
+    Please complete 4 a)!
+  \end{center}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Observations: The \secname}
+\begin{exampleblock}{Exercise 4 continued}
+  \begin{enumerate}
+  \item The vendor of \texttt{Lamp} changes it's definition. All methods containing \texttt{Turn} are renamed to \texttt{Ramp} to allow dimming!
+  \item Look at \texttt{Button}: Can it be reused for classes of type \texttt{Signal}?
+  \end{enumerate}
+\end{exampleblock}
+\pause
+\begin{exampleblock}{Exercise 4: A Solution}
+  \begin{columns}[t]
+
+    \begin{column}{.45\textwidth}
+       \begin{block}{Naive Ansatz}
+
+          \begin{center}
+               \resizebox{.95\textwidth}{!}{\includegraphics{uml/ButtonNaive}}
+          \end{center}
+      %   
+       \end{block}
+ %     
+    \end{column}
+
+    \begin{column}{.45\textwidth}
+       \begin{block}{Inverted Dependency}
+       \begin{center}
+         \resizebox{.85\textwidth}{!}{\includegraphics{uml/ButtonInverse}}
+       \end{center}
+      \end{block}
+    \end{column}
+
+  \end{columns}
+  
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Review \& Summary: The \secname}
+\pause
+\vfill
+\begin{block}{Dynamic and Static Polymorphism}
+in c++, both can help to invert dependencies\\
+\begin{columns}[t]
+
+    \begin{column}{.45\textwidth}
+       \begin{block}{Dynamic Polymorphism through Abstract Interfaces}
+
+          \begin{center}
+               \resizebox{.95\textwidth}{!}{\includegraphics{uml/ButtonInverse}}
+          \end{center}
+      %   
+       \end{block}
+ %     
+    \end{column}
+
+    \begin{column}{.45\textwidth}
+       \begin{block}{Static Polymorphism through template classes}
+          \begin{center}
+               \resizebox{.95\textwidth}{!}{\includegraphics{uml/ButtonTemplate}}
+          \end{center}
+      \end{block}
+    \end{column}
+
+  \end{columns}
+  
+\end{block}
+\end{frame}
 
 \section{Summary}
+\begin{frame}
+  \frametitle{The \secname}
+\end{frame}
 
 \section{References}
 \scriptsize
