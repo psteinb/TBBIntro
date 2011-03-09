@@ -1,4 +1,7 @@
-\documentclass[9pt]{beamer}
+\documentclass[9pt,handout]{beamer}
+\usepackage{pgfpages}
+\pgfpagesuselayout{2 on 1}[a4paper,border shrink=12mm]
+
 \usepackage[latin1]{inputenc}
 \usepackage[english]{babel}
 \usepackage{graphics}
@@ -32,8 +35,11 @@
 \setbeamertemplate{caption}[numbered]
 \definecolor{somegrey}{RGB}{240,240,240}
 
-\setbeamercolor{block title}{bg=black!80!white,fg=white}
-\setbeamercolor{block title alerted}{use=alerted text,fg=blue!40!white,bg=black!80!white}
+
+
+
+\setbeamercolor{block title}{bg=black!60!white,fg=white}
+\setbeamercolor{block title alerted}{use=alerted text,fg=blue!40!white,bg=black!60!white}
 \setbeamercolor{block title example}{bg=black!20!white}
 
 %\addfootbox{bg=grey,fg=black}{\quad \insertshortauthor \hspace{.4\textwidth} \insertshortinstitute \hspace{.4\textwidth} \insertpagenumber}
@@ -551,7 +557,7 @@ public:
 \begin{frame}
   \frametitle{References}
   \bibliographystyle{plain} 
-  \bibliography{Mar10.ClassDesign}
+  \bibliography{Mar10.ClassDesign_Handout}
 \end{frame}
 \end{document}
 
