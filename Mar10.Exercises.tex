@@ -52,5 +52,46 @@ Imagine we are writing a small piece of software to draw various geometric objec
 \item How many responsibilities has \texttt{DrawAllShapes} in Listing \ref{SqrCirc}?
 \item We are adding a new class \texttt{Triangle} and we want it to be drawn as well. How does Listing \ref{SqrCirc} adapt to this?
 \end{enumerate}
+
+\newpage
+\section*{Exercise 3}
+\large
+Assume 2 classes representing 2 related geometric entities.
+\small
+\lstinputlisting[label=SquRectangle,caption={\large \textbf{The Square/Rectangle Problem}}]{code/LSP.cc} 
+\normalsize
+Consider the following use of Rectangle and Square:
+\small
+\begin{lstlisting}[float=h,caption={\large Using Square and Rectangle},label=UsingRectangle]
+  void g(Rectangle& r)
+  {
+    r.SetWidth(5);
+    r.SetHeight(4);
+    assert(r.GetWidth() * r.GetHeight()) == 20);
+  }
+  \end{lstlisting}
+\normalsize
+\begin{enumerate}
+\item What will happen if Listing \ref{UsingRectangle} is called with a \texttt{Square} or a \texttt{Rectangle} object?
+\item Given the design in Listing \ref{SquRectangle}, what counter-measures are necessary to make Listing \ref{UsingRectangle} work? 
+\end{enumerate}
+
+\newpage
+\section*{Exercise 4}
+Given the following \texttt{Lamp} class definition:
+\small
+\begin{lstlisting}[float=h,caption={\large A Lamp class},label=Lamp]
+class Lamp
+{
+  public:
+    void TurnOn();
+    void TurnOff();
+};
+\end{lstlisting}
+\normalsize
+\begin{enumerate}
+\item Write or sketch a \texttt{Button} class that turns \texttt{Lamp} on and off!
+\end{enumerate}
+\newpage
 \end{document}
  
