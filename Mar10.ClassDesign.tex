@@ -205,12 +205,13 @@
 
 
 \begin{frame}
-  \frametitle{Single-Responsibility-Principle}
-  \begin{theorem}[Single-Responsibility-Principle, \cite{Agile}]
+  \frametitle{Single-Responsibility Principle}
+  \begin{theorem}[from \cite{Agile}]
     A class should only have \textbf{one} reason to change, i.e. try to create systems with high orthogonality.
   \end{theorem}
 \vfill
 \pause
+\begin{exampleblock}{Looking back at Exercise 1 a)}
   \begin{columns}[t]
     \begin{column}{.48\textwidth}
        \begin{block}{before}
@@ -231,11 +232,12 @@
       \end{block}
     \end{column}
   \end{columns}
+\end{exampleblock}
 \end{frame}
 
-\section{Open-Closed}
+\section{Open-Closed Principle}
 \begin{frame}
-  \frametitle{The Open-Closed Principle}
+  \frametitle{The \secname}
   \begin{theorem}[Open-Closed Principle, \cite{Agile}]
     Software Entities (classes, modules, functions, etc) should be open for extenstion, but closed for modification.
   \end{theorem}
@@ -275,7 +277,7 @@
 
 
 \begin{frame}[fragile]
-  \frametitle{The Open-Closed Principle Reviewed}
+  \frametitle{Reviewed: \secname}
   \begin{block}{The Square/Circle Problem}
     \begin{itemize}
     \item \emph{rigid}: adding triangle requires \texttt{Shape, Square, Circle, DrawAllShapes} to be recompiled and redeployed
@@ -325,18 +327,79 @@ void DrawAllShapes(
 \end{frame}
 
 \begin{frame}
-  \frametitle{The Open-Closed Principle Summary}
+  \frametitle{Summary: The \secname}
 \begin{block}{But hold on ...}
-  
+  \begin{itemize}
+  \item<1-> did the abstraction from above close \texttt{DrawAllShapes} against all changes?
+    \begin{itemize}
+    \item \textbf{No}, there is no model of abstraction that is natural to all
+      contexts!
+    \item closure can never be complete, only strategic
+    \end{itemize}
+  \item<2-> how to deal with possible changes?
+    \begin{enumerate}
+    \item derive possible changes from software requirements
+    \item implement necessary abstractions
+    \item wait!
+    \end{enumerate}
+  \end{itemize}
 \end{block}
 \vfill
 \pause
-\begin{block}{To Summarize}
-  
+\begin{block}{To Summarize}<3->
+  \begin{itemize}
+  \item conforming to the open-closed principle yields greatest benefits of OOP (flexibility, reusability, maintainability)
+  \item apply abstraction to parts of software that exhibit frequent change
+  \item \alert<3->{Resisting premature abstraction is as important as abstraction itself.}
+  \end{itemize}
 \end{block}
 \end{frame}
 
-\section{Liskhov Substitution}
+\section{Liskov Substitution Principle}
+\begin{frame}
+  \frametitle{The \secname}
+  \begin{theorem}[paraphrased from \cite{Liskov}]
+    Subtypes must be substitutable for their base types.
+  \end{theorem}
+\pause
+\vfill
+\begin{exampleblock}{Exercise 3}
+  \begin{center}
+    Try to answer question 3 a) and b) !
+  \end{center}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Review \& Summary: The \secname}
+  \begin{block}{Observations from Exercise 3}
+    \begin{itemize}
+    \item<2-> Violations of {\secname} result in Run-Time Type Information to be used
+      \begin{itemize}
+      \item which in turn violates the Open-Closed Principle
+      \end{itemize}
+    \item<3-> an (inheritance) model can never be validated in isolation 
+      \begin{itemize}
+      \item but rather with its use (users) in mind
+      \item \texttt{Is-A} relationship within inheritance refers to \textbf{behavior} that can be \textbf{assumed} or that \textbf{clients depend upon}.
+      \end{itemize}
+    \item<4-> how to ensure/enforce \secname?
+      \begin{itemize}
+      \item Design-by-Contract 
+      \item in C++: only by assertions or Unit Tests
+      \end{itemize}
+    \end{itemize}
+  \end{block}
+\pause
+\vfill
+\begin{block}{Summary}<5->
+  \begin{itemize}
+  \item this principle ensures: maintainability, reusability, robustness
+  \item {\secname} enables the Open-Closed Principle
+  \item the contract of a base type has to be well understood, if not even enforced by the code
+  \end{itemize}
+\end{block}
+\end{frame}
 
 \section{Dependency-Inversion}
 
