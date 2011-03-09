@@ -78,9 +78,9 @@
 \end{frame}
 
 \section[Why OOP?]{Why Object-Oriented Programming?}
-\subsection[ProceduralVsOO]{Procedural vs. OO Programming}
+\subsection[ProceduralVsOO]{Procedural versus OO Programming}
 \begin{frame}
-\frametitle{Procedural vs. OO Programming}
+\frametitle{Procedural vs. OO Programming, from \cite{Stefan}}
 \begin{columns}[c]
   \begin{column}{.49\textwidth}
 
@@ -238,7 +238,7 @@
 \section{Open-Closed Principle}
 \begin{frame}
   \frametitle{The \secname}
-  \begin{theorem}[Open-Closed Principle, \cite{Agile}]
+  \begin{theorem}[from \cite{Agile}]
     Software Entities (classes, modules, functions, etc) should be open for extenstion, but closed for modification.
   \end{theorem}
 \vfill
@@ -281,7 +281,7 @@
   \begin{block}{The Square/Circle Problem}
     \begin{itemize}
     \item \emph{rigid}: adding triangle requires \texttt{Shape, Square, Circle, DrawAllShapes} to be recompiled and redeployed
-    \item \emph{fragile}: \texttt{switch/case} will be required by all client classes that use shapes
+    \item \emph{fragile}: \texttt{switch/case} will be required by all client classes that use \texttt{Shape}s
     \item \emph{immobile}: reusing \texttt{DrawAllShapes} is impossible without including \texttt{Shape, Square, Circle} as well
     \end{itemize}
   \end{block}
@@ -376,7 +376,7 @@ void DrawAllShapes(
     \begin{itemize}
     \item<2-> Violations of {\secname} result in Run-Time Type Information to be used
       \begin{itemize}
-      \item which in turn violates the Open-Closed Principle
+      \item violates the Open-Closed Principle
       \end{itemize}
     \item<3-> an (inheritance) model can never be validated in isolation 
       \begin{itemize}
@@ -425,7 +425,8 @@ void DrawAllShapes(
   \frametitle{Observations: The \secname}
 \begin{exampleblock}{Exercise 4 continued}
   \begin{enumerate}
-  \item The vendor of \texttt{Lamp} changes it's definition. All methods containing \texttt{Turn} are renamed to \texttt{Ramp} to allow dimming!
+  \item The vendor of \texttt{Lamp} changes it's definition. All methods containing \texttt{Turn} are renamed to \texttt{Ramp}! Face your design with that!
+    \pause
   \item Look at \texttt{Button}: Can it be reused for classes of type \texttt{Signal}?
   \end{enumerate}
 \end{exampleblock}
@@ -462,7 +463,7 @@ void DrawAllShapes(
 \vfill
 \begin{block}{Dynamic and Static Polymorphism}
 \small
-in c++, both can help to invert dependencies\\
+in C++, both can help to invert dependencies\\
 \begin{columns}[t]
 
     \begin{column}{.45\textwidth}
@@ -516,10 +517,10 @@ public:
   \frametitle{Summary: The \secname}
 \begin{block}{Summary}
   \begin{itemize}
-  \item dependency of policies on details natural to procedural design
+  \item dependency of policies on details is natural to procedural design
   \item inversion of dependencies is hallmark of (good) object-oriented design
   \item {\secname} is at the heart of reusable frameworks (no matter what size)
-  \item in addition, enables the Open-Closed Principle
+  \item enables the Open-Closed Principle
   \end{itemize}
 \end{block}
 \end{frame}
