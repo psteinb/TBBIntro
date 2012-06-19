@@ -46,7 +46,15 @@
 }
 
 %\addfootbox{bg=grey,fg=black}{\quad \insertshortauthor \hspace{.4\textwidth} \insertshortinstitute \hspace{.4\textwidth} \insertpagenumber}
-
+\usepackage{listings}
+\lstset{%
+  language=C++,
+  numbers=left, 
+  numberstyle=\tiny,
+  frame=single
+}
+%\renewcommand{\theenumi}{\alph{enumi}}
+%\renewcommand{\labelenumi}{\theenumi)}
 \begin{document}
 
 
@@ -232,28 +240,50 @@
   \frametitle{A Quick Look Inside}
   \begin{block}{Containers}
     \begin{itemize}
-    \item \texttt{tbb::concurrent_vector}
-    \item \texttt{tbb::concurrent_hash_map}
-    \item \texttt{tbb::concurrent_queue}
+    \item \texttt{tbb::concurrent\_vector}
+    \item \texttt{tbb::concurrent\_hash\_map}
+    \item \texttt{tbb::concurrent\_queue}
     \end{itemize}
   \end{block}
 
   \begin{block}{Algorithms}
     \begin{itemize}
-    \item \texttt{tbb::parallel_do}
-    \item \texttt{tbb::parallel_for} (*)
-    \item \texttt{tbb::parallel_sort}
-    \item \texttt{tbb::parallel_reduce} (*)
-    \item \texttt{tbb::parallel_pipeline}
+    \item \texttt{tbb::parallel\_do}
+    \item \texttt{tbb::parallel\_for} (*)
+    \item \texttt{tbb::parallel\_sort}
+    \item \texttt{tbb::parallel\_reduce} (*)
+    \item \texttt{tbb::parallel\_pipeline}
     \item ...
     \end{itemize}
   \end{block}
   
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
   \frametitle{First Example: A simple logger}
-  
+  \begin{block}{Serial Version}
+    \small
+    \begin{lstlisting}[]
+for(int i = 0;i<nIterations;i++){ 
+  std::cout << "iteration "<< i << std::endl; 
+}
+    \end{lstlisting}
+  \end{block}
+   \vfill
+   \begin{block}{Parallel}
+     \small
+     \begin{lstlisting}[]
+//...  
+int grainsize = nIterations/nThreads;
+tbb::parallel_for(tbb::blocked_range<size_t>(0, 
+                                             nIterations,
+                                             grainsize), 
+                  NumPrinter() 
+                  ); 
+//...
+     \end{lstlisting}
+   \end{block}
+
 \end{frame}
 % \section[]{Why Object-Oriented Programming?}
 % \subsection[ProceduralVsOO]{Procedural versus OO Programming}

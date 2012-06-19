@@ -1,4 +1,4 @@
-\documentclass[14pt,a4paper]{article}
+\documentclass[a4paper]{article}
 \usepackage[latin1]{inputenc}
 \usepackage[english]{babel}
 \usepackage{a4wide}
@@ -16,88 +16,57 @@
 \renewcommand{\labelenumi}{\theenumi)}
 
 \begin{document}
-\part*{Class Design Principles}
+\part*{Pragmatic Introduction to Intel's Threading Building Blocks}
 \label{part:all}
 
  
 \section*{Example 1}
 \large
-A simple Logger!\\
- \begin{enumerate}
-\item \large \textbf{The Serial Version Class}\\
-  \small
-  \begin{lstlisting}[float=ht,caption={\large \textbf{The Modem Class}}]
-    for(int i = 0;i<nMax;i++)
-    std::cout << "iteration "<< i << std::endl;
-  \end{lstlisting}
-  
-\newpage
-\item \large \textbf{The TStyle Class}\\
-  \small \lstinputlisting[caption={\large \textbf{The TStyle Class}}]{code/TStyle.h}
-  \normalsize
-\end{enumerate}
-
-\newpage
-\section*{Exercise 2}
-Imagine we are writing a small piece of software to draw various geometric objects.\\
-\small
-\lstinputlisting[caption={\large \textbf{The Square/Circle Problem}},label=SqrCirc]{code/OCP.cc} 
-\normalsize
-\begin{enumerate}
-\item How many responsibilities has \texttt{DrawAllShapes} in Listing \ref{SqrCirc}?
-\item We are adding a new class \texttt{Triangle} and we want it to be drawn as well. How does Listing \ref{SqrCirc} adapt to this?
-\end{enumerate}
-
-\newpage
-\section*{Exercise 3}
-\large
-Assume 2 classes representing 2 related geometric entities.
-\small
-\lstinputlisting[label=SquRectangle,caption={\large \textbf{The Square/Rectangle Problem}}]{code/LSP.cc} 
-\normalsize
-Consider the following use of Rectangle and Square:
-\small
-\begin{lstlisting}[float=h,caption={\large Using Square and Rectangle},label=UsingRectangle]
-  void g(Rectangle& r)
-  {
-    r.SetWidth(5);
-    r.SetHeight(4);
-    assert(r.GetWidth() * r.GetHeight()) == 20);
-  }
-  \end{lstlisting}
-\normalsize
-\begin{enumerate}
-\item What will happen if Listing \ref{UsingRectangle} is called with a \texttt{Square} or a \texttt{Rectangle} object?
-\item Given the design in Listing \ref{SquRectangle}, what counter-measures are necessary to make Listing \ref{UsingRectangle} work? 
-\end{enumerate}
-
-\newpage
-\section*{Exercise 4}
-Given the following \texttt{Lamp} class definition:
-\small
-\begin{lstlisting}[float=h,caption={\large A Lamp class},label=Lamp]
-class Lamp
+A simple cout of a for loop!\\
+  \tiny
+   \begin{lstlisting}[float=ht,caption={\large \textbf{Serial}}]
+for(int i = 0;i<nMax;i++){
+  std::cout << "iteration "<< i << std::endl;
+}
+   \end{lstlisting}
+\\
+   \begin{lstlisting}[float=ht,caption={\large \textbf{Parallel}}]
+struct NumPrinter
 {
-  public:
-    void TurnOn();
-    void TurnOff();
+   void operator()(const tbb::blocked_range<size_t>& r) const {
+    tbb::blocked_range<size_t>::const_iterator rangeItr = r.begin();
+    tbb::blocked_range<size_t>::const_iterator rangeEnd = r.end();
+   
+    for (;rangeItr!=rangeEnd; ++rangeItr)
+    {
+      std::cout << "iteration "<< rangeItr << std::endl;
+    }
+  }
 };
-\end{lstlisting}
-\normalsize
-\begin{enumerate}
-\item Write or sketch a \texttt{Button} class that turns \texttt{Lamp} on and off!
-\end{enumerate}
-\newpage
-\section*{Disclaimer}
-\Large
-All Source code snippets were adapted from the book:\\
-\begin{tabular}[h]{lr} 
-  author & 	 {Martin, Robert C. and Newkirk, James W. and Koss, Robert S.}\\
-  title & 	 {Agile Software Development}\\
-  publisher & 	 {Prentice Hall}\\
-  year & 	 {2003}\\
-  note & 	 {http://www.objectmentor.com/resources/publishedArticles.html} 
-\end{tabular}
+
+int main(int argc, char* argv[])
+{
+
+  //...
+  int grainsize = nIterations/nThreads;
+  tbb::parallel_for(tbb::blocked_range<size_t>(0,
+                                               nIterations,
+                                               grainsize),
+                    NumPrinter()
+                    );
+  //...
+}
+   \end{lstlisting}
+  
+% \section*{Exercise 2}
+% Imagine we are writing a small piece of software to draw various geometric objects.\\
+% \small
+% \lstinputlisting[caption={\large \textbf{The Square/Circle Problem}},label=SqrCirc]{code/OCP.cc} 
+% \normalsize
+% \begin{enumerate}
+% \item How many responsibilities has \texttt{DrawAllShapes} in Listing \ref{SqrCirc}?
+% \item We are adding a new class \texttt{Triangle} and we want it to be drawn as well. How does Listing \ref{SqrCirc} adapt to this?
+% \end{enumerate}
 
 \end{document}
  
