@@ -20,10 +20,10 @@ ifdef BOOST_INC
 endif
 
 
-ifdef ROOTSYS
-	INCLUDES += `root-config --cflags`
-	INCLUDES += `root-config --glibs`
-endif
+# ifdef ROOTSYS
+# 	INCLUDES += `root-config --cflags`
+# 	INCLUDES += `root-config --glibs`
+# endif
 
 
 %.exe : %.cc configured
@@ -34,7 +34,7 @@ clean :
 	rm -f $(CURRPATH)/*.so $(CURRPATH)/*.exe $(CURRPATH)/*.texe 
 
 configured :
-	@if [ -z $(ROOTSYS) ] ; then echo -e "\n   !!!! ERROR: ROOT not set up properly!\n"; exit 1; fi
+#	@if [ -z $(ROOTSYS) ] ; then echo -e "\n   !!!! ERROR: ROOT not set up properly!\n"; exit 1; fi
 	@if [ -z $(TBB_INC) ] ; then echo -e "\n   !!!! ERROR: TBB not set up properly!\n"; exit 1; fi
 	@if [ -z $(BOOST_INC) ] ; then echo -e "\n   !!!! ERROR: BOOST not set up properly!\n"; exit 1; fi
 
