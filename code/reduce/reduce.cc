@@ -1,6 +1,5 @@
 #define _SIMPLE_CC_
 #include <iostream>
-#include <vector>
 #include "boost/program_options.hpp"
 #include "boost/thread.hpp"
 #include "tbb/tbb.h"
@@ -58,6 +57,7 @@ public:
 class Random
 {
   tbb::concurrent_vector<int> * const inputData;
+  
 
 public:
     //constructor
@@ -67,14 +67,14 @@ public:
   
   void operator()(const tbb::blocked_range<size_t>& r) const {
 
-    tbb::concurrent_vector<int> * thisContainer = inputData;
+    tbb::blocked_range<size_t>::const_iterator rangeItr = r.begin();
+    tbb::blocked_range<size_t>::const_iterator rangeEnd = r.end();
 
     boost::random::mt19937_64 rng(42);
     boost::random::uniform_int_distribution<> uni_dist(1,6);
     boost::variate_generator<boost::random::mt19937_64&, boost::random::uniform_int_distribution<> > six(rng, uni_dist);
 
-    tbb::blocked_range<size_t>::const_iterator rangeItr = r.begin();
-    tbb::blocked_range<size_t>::const_iterator rangeEnd = r.end();
+    
     for (;rangeItr!=rangeEnd; ++rangeItr)
      {
        inputData->at(rangeItr) = six();
@@ -127,6 +127,10 @@ int main(int argc, char* argv[])
   po::store(po::parse_command_line(argc, argv, optDescription), varMap);
   po::notify(varMap);
  
+  if (varMap.count("help")) {
+    std::cout << optDescription << "\n";
+    return 1;
+  }
   //////////////////////////////////////////////////////////////////////////////
   //PRINT USER INFO
   short nThreads = varMap["nthreads"].as<short>();
@@ -148,9 +152,8 @@ int main(int argc, char* argv[])
   else{
     //////////////////////////////////////////////////////////////////////////////
     //DO PARALLEL FOR
-    int grainsize = nIterations/nThreads;
+    int grainsize = (nIterations/nThreads);
     std::cout << "parallel version with " << nThreads  << " threads, grainsize "<< grainsize << std::endl;
-    
     Random rndWorker(data);
     tbb::parallel_for(tbb::blocked_range<size_t>(0,nIterations,grainsize),rndWorker);
 
@@ -163,4 +166,6 @@ int main(int argc, char* argv[])
   
   std::cout << "Done." << std::endl;
   delete data;
+  
+  return 0;
 }

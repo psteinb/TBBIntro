@@ -42,7 +42,11 @@ int main(int argc, char* argv[])
   po::variables_map varMap;
   po::store(po::parse_command_line(argc, argv, optDescription), varMap);
   po::notify(varMap);
- 
+
+  if (varMap.count("help")) {
+    std::cout << optDescription << "\n";
+    return 1;
+  }
   //////////////////////////////////////////////////////////////////////////////
   //PRINT USER INFO
   short nThreads = varMap["nthreads"].as<short>();
@@ -70,4 +74,5 @@ int main(int argc, char* argv[])
   
   std::cout << "Done." << std::endl;
 
+  return 0;
 }

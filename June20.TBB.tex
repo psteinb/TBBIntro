@@ -260,7 +260,7 @@
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{First Example: A simple logger}
+  \frametitle{Example 1: A simple logger}
   \begin{block}{Serial Version}
     \small
     \begin{lstlisting}[]
@@ -269,6 +269,7 @@ for(int i = 0;i<nIterations;i++){
 }
     \end{lstlisting}
   \end{block}
+\pause
    \vfill
    \begin{block}{Parallel}
      \small
@@ -285,6 +286,55 @@ tbb::parallel_for(tbb::blocked_range<size_t>(0,
    \end{block}
 
 \end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Example 2: A throwing random numbers}
+  
+   \begin{block}{Parallel Reduce}
+     \small
+     \begin{lstlisting}[]
+Sum sumWorker(data);
+tbb::parallel_reduce(tbb::blocked_range<size_t>(0,
+                                                nIterations,
+                                                grainsize),
+                     sumWorker);
+     \end{lstlisting}
+   \end{block}
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Attention}
+  \vfill
+  \begin{alertblock}{Always ..}
+    Compare Parallel and Serial Performance!\\
+    (was/is the effort worthwhile?)
+  \end{alertblock}
+  \vfill
+\end{frame}
+
+\begin{frame}
+  \frametitle{Summary}
+  \vfill
+  \begin{block}{My Conclusion}
+    \begin{itemize}
+    \item TBB is a well composed template library
+    \item its open source (so sciencists can go for it)
+    \item it offers high-level functionality that encapsulates low level thread management
+    \item it offers an API to approach/solve most problems with parallel solutions
+    \item it has a learning curve
+    \end{itemize}
+  \end{block}
+
+  \vfill
+  \begin{block}{further reading I recommend}
+    \begin{itemize}
+    \item \href{http://threadingbuildingblocks.org/documentation.php}{online} TBB documentations
+    \item \href{http://www.dailymotion.com/playlist/x1pc0m_Intel_Academic_EMEA_intro-to-parallel-programming/1#video=xksoje}{video lecture} series by Clay Breshears
+    \end{itemize}
+  \end{block}
+\end{frame}
+
 % \section[]{Why Object-Oriented Programming?}
 % \subsection[ProceduralVsOO]{Procedural versus OO Programming}
 % \begin{frame}
